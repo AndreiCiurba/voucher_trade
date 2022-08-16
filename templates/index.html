@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<div class = "content">
+
+<table style="border: 1px solid;">
+    <tr>
+        <th>Content</th>
+        <th>Price</th>
+        <th>Post date</th>
+        <th>Actions</th>
+    </tr>
+    {%  for voucher in vouchers %}
+    <tr>
+        <td> {{ voucher.content }}</td>
+        <td> {{ voucher.price }}</td>
+        <td> {{ voucher.date_created }}</td>
+        <td>
+            <a href="/delete/{{voucher.id}}">Delete</a>
+            <a href="/update/{{voucher.id}}">Update</a>
+        </td>
+    </tr>
+    {%  endfor %}
+</table>
+<form action="/" method="POST">
+    <input type="text" name="content" id="content">
+    <input type="number" name="price" id="price">
+    <input type="submit" value = "Add voucher">
+</form>
+</div>
+{% endblock %}
